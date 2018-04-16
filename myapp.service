@@ -1,0 +1,11 @@
+# Place this .service file in /etc/systemd/system/
+
+[Unit]
+Description=Spark service
+
+[Service]
+ExecStart=/path/to/myapp/sbin/start.sh
+ExecStop=/path/to/myapp/sbin/stop.sh
+
+[Install]
+WantedBy=multi-user.target

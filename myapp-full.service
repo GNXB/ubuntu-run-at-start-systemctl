@@ -1,0 +1,21 @@
+# Place this .service file in /etc/systemd/system/
+
+[Unit]
+Description=My App
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+User=myapp
+Type=forking
+ExecStart=/path/to/myapp/sbin/start.sh
+ExecStop=/path/to/myapp/sbin/stop.sh
+TimeoutSec=30
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target
